@@ -3,20 +3,21 @@ import axiosAPI from '../../axiosAPI.ts';
 import { useEffect, useState } from 'react';
 import Loader from '../UI/Loader.tsx';
 import { IPageApi } from '../../types';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ContentPage = () => {
-  const [pages, setPages] = useState<IPageApi>({});
+  const [page, setPage] = useState<IPageApi>({});
   const [loading, setLoading] = useState<boolean>(false);
-  const params = useNavigate();
+  const { id } = useParams<{ id: string }>();
 
   const fetchData = async () => {
+    if (!id) return;
     setLoading(true);
     try  {
-      const response = await axiosAPI<IPageApi>.get(`pages/.json`);
+      const response = await axiosAPI.get<IPageApi>(`pages/${id}.json`);
 
       if (response.data) {
-        setPages(response.data);
+        setPage(response.data);
         console.log(response.data);
       }
     } catch(e) {
@@ -29,15 +30,20 @@ const ContentPage = () => {
 
   useEffect(() => {
     void fetchData();
-  },[])
-
+  },[id])
 
   return (
     loading ? (<Loader/>) :
         (
           <div className="container">
-            <h2>{}</h2>
-            <p>sss</p>
+            {page ? (
+              <div className="container mt-5 text-center">
+                <h2>{page.title}</h2>
+                <p>{page.content}</p>
+              </div>
+            ) : (
+              <p>Page is not found :(</p>
+            )}
           </div>
         )
   );
