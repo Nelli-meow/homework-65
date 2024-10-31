@@ -10,16 +10,16 @@ const Header = () => {
           <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="text-black p-2 text-decoration-none" to="/home">Home</NavLink>
+                <NavLink className="text-black p-2 text-decoration-none" to="/pages/home">Home</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="text-black p-2 text-decoration-none" to="/about">About</NavLink>
+                <NavLink className="text-black p-2 text-decoration-none" to="/pages/about">About</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="text-black p-2 text-decoration-none" to="/contacts">Contacts</NavLink>
+                <NavLink className="text-black p-2 text-decoration-none" to="/pages/contacts">Contacts</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="text-black p-2 text-decoration-none" to="/quotes">Admin</NavLink>
+                <NavLink className="text-black p-2 text-decoration-none" to="/pages/admin">Admin</NavLink>
               </li>
             </ul>
           </div>
