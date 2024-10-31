@@ -2,7 +2,7 @@ import './App.css'
 import Header from './components/Header/Header.tsx';
 import { Route, Routes } from 'react-router-dom';
 import ContentPage from './components/ContentPage/ContentPage.tsx';
-import AdminForm from './components/AdminForm/AdminForm.tsx';
+import NewPage from './containers/NewPage/NewPage.tsx';
 
 const App = () => {
 
@@ -11,8 +11,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<ContentPage/>}/>
-        <Route path="/pages/home" element={<ContentPage/>}/>
-        <Route path="/pages/admin" element={<AdminForm/>}/>
+        <Route path="/pages/:id" element={<ContentPage/>}/>
+        <Route path="/pages/admin" element={<NewPage/>}/>
         <Route path="*" element={<p className="text-center m-5">Page is not found :(</p>}/>
       </Routes>
     </>

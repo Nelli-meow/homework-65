@@ -3,15 +3,17 @@ import axiosAPI from '../../axiosAPI.ts';
 import { useEffect, useState } from 'react';
 import Loader from '../UI/Loader.tsx';
 import { IPageApi } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 const ContentPage = () => {
-  const [pages, setPages] = useState();
+  const [pages, setPages] = useState<IPageApi>({});
   const [loading, setLoading] = useState<boolean>(false);
+  const params = useNavigate();
 
   const fetchData = async () => {
     setLoading(true);
     try  {
-      const response = await axiosAPI<IPageApi>.get('pages.json');
+      const response = await axiosAPI<IPageApi>.get(`pages/.json`);
 
       if (response.data) {
         setPages(response.data);
@@ -34,7 +36,7 @@ const ContentPage = () => {
     loading ? (<Loader/>) :
         (
           <div className="container">
-            <h2>sss</h2>
+            <h2>{}</h2>
             <p>sss</p>
           </div>
         )
